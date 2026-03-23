@@ -1,0 +1,35 @@
+import { STORAGE_KEYS } from '@shared/config'
+import { useTelegram } from '@shared/hooks'
+import type { ApiClientError } from '@shared/services'
+import { type UseMutationResult, useMutation } from '@tanstack/react-query'
+import ls from 'localstorage-slim'
+import { authApi } from './api'
+import type { AuthResponse } from './types'
+
+export const authKeys = {
+  all: ['auth'] as const,
+  authorize: () => [...authKeys.all, 'authorize'] as const,
+}
+
+export const useAuthMutation = (): UseMutationResult<
+  AuthResponse,
+  ApiClientError,
+  void
+> => {
+  const { webApp } = useTelegram()
+
+  return useMutation<AuthResponse, ApiClientError, void>({
+    mutationKey: authKeys.authorize(),
+    mutationFn: () => {
+      const initData =
+        webApp?.initData || import.meta.env.VITE_TELEGRAM_INIT_DATA
+
+      return authApi.authorize({ initData })
+    },
+    onSuccess: (data) => {
+      if (data.data) {
+        ls.set(STORAGE_KEYS.ADS_MARKET_JWT, data.data)
+      }
+    },
+  })
+}
