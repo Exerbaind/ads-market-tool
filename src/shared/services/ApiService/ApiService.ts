@@ -46,6 +46,16 @@ const isAuthRequest = (request: Request): boolean => {
 const isObjectRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
 
+const isSuccessEnvelope = (
+  value: unknown,
+): value is { ok: true; data: unknown } => {
+  if (!isObjectRecord(value)) {
+    return false
+  }
+
+  return value.ok === true && 'data' in value
+}
+
 const getOptionalString = (
   value: Record<string, unknown>,
   key: string,
@@ -181,6 +191,10 @@ const request = async <TData>(
 
     if (payloadError) {
       throw new ApiClientError(payloadError)
+    }
+
+    if (isSuccessEnvelope(payload)) {
+      return payload.data as TData
     }
 
     return payload as TData

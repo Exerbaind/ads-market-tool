@@ -1,5 +1,5 @@
 import { ApiService } from '@shared/services'
-import type { AuthRequest, AuthResponse } from './types'
+import type { AuthRequest, AuthResponse } from '@shared/types'
 
 const AUTH_ENDPOINT = '/market/auth'
 

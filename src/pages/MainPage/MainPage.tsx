@@ -1,12 +1,17 @@
-import { Text } from '@shared/components'
-import { useMainPage } from './useMainPage'
+import { EmptyScreen, WaitlistScreen } from "./components";
+import { useMainPage } from "./useMainPage";
 
 export const MainPage = () => {
-  const { a } = useMainPage()
+  const { waitlistData, waitlistIsLoading } = useMainPage();
 
-  return (
-    <Text type="title1" className="font-semibold" as="h1">
-      Main Page
-    </Text>
-  )
-}
+  if (waitlistIsLoading) return null;
+
+  if (
+    !waitlistData?.channels_connected?.length &&
+    !waitlistData?.referrals?.length
+  ) {
+    return <EmptyScreen />;
+  }
+
+  return <WaitlistScreen />;
+};
