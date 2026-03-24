@@ -1,3 +1,4 @@
+import { useTelegram } from "@shared/hooks";
 import { cn } from "@shared/lib";
 import {
   type CSSProperties,
@@ -54,6 +55,9 @@ export const PageLayout = ({
   const [safeInsets, setSafeInsets] =
     useState<SafeAreaInsets>(getSafeAreaInsets);
   const [isVisible, setIsVisible] = useState(disableFadeIn);
+  const { webApp, checkDevice } = useTelegram();
+  const { isMobile } = checkDevice();
+  const fullscreenMobilePaddingTop = webApp?.isFullscreen && isMobile ? 96 : 0;
 
   useEffect(() => {
     if (disableFadeIn) return;
@@ -87,7 +91,7 @@ export const PageLayout = ({
   }, []);
 
   const computedStyle: CSSProperties = {
-    paddingTop: `calc(max(env(safe-area-inset-top, 0px), ${safeInsets.top}px) + ${verticalPadding}px)`,
+    paddingTop: `calc(max(env(safe-area-inset-top, 0px), ${safeInsets.top}px) + ${verticalPadding}px + ${fullscreenMobilePaddingTop}px)`,
     paddingRight: `calc(max(env(safe-area-inset-right, 0px), ${safeInsets.right}px) + ${horizontalPadding}px)`,
     paddingBottom: `calc(max(env(safe-area-inset-bottom, 0px), ${safeInsets.bottom}px) + ${verticalPadding}px)`,
     paddingLeft: `calc(max(env(safe-area-inset-left, 0px), ${safeInsets.left}px) + ${horizontalPadding}px)`,

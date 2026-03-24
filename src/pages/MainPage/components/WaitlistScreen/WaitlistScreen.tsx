@@ -22,8 +22,6 @@ export const WaitlistScreen = () => {
     waitlistIsLoading,
   } = useWaitlistScreen();
 
-  console.log(waitlistData);
-
   return (
     <PageLayout>
       <div className="w-full relative px-4">
