@@ -1,5 +1,5 @@
 import { AppRoutes } from "@Routes";
-import { useAuthMutation } from "@shared/api/auth";
+import { useAuthMutation } from "@shared/api";
 import { useTelegram } from "@shared/hooks";
 import { checkJwtExpired } from "@shared/lib";
 import { useEffect } from "react";
@@ -24,9 +24,5 @@ export default function App() {
     return subscribeTelegramTheme();
   }, [applyTelegramTheme, subscribeTelegramTheme]);
 
-  return (
-    <div>
-      <AppRoutes />
-    </div>
-  );
+  return <AppRoutes />;
 }

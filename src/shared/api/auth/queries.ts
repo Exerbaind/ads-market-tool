@@ -1,10 +1,10 @@
 import { STORAGE_KEYS } from '@shared/config'
 import { useTelegram } from '@shared/hooks'
 import type { ApiClientError } from '@shared/services'
+import type { AuthResponse } from '@shared/types'
 import { type UseMutationResult, useMutation } from '@tanstack/react-query'
 import ls from 'localstorage-slim'
 import { authApi } from './api'
-import type { AuthResponse } from './types'
 
 export const authKeys = {
   all: ['auth'] as const,
@@ -27,8 +27,8 @@ export const useAuthMutation = (): UseMutationResult<
       return authApi.authorize({ initData })
     },
     onSuccess: (data) => {
-      if (data.data) {
-        ls.set(STORAGE_KEYS.ADS_MARKET_JWT, data.data)
+      if (data) {
+        ls.set(STORAGE_KEYS.ADS_MARKET_JWT, data)
       }
     },
   })
