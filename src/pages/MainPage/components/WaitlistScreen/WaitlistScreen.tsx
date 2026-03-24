@@ -24,7 +24,7 @@ export const WaitlistScreen = () => {
 
   return (
     <PageLayout>
-      <div className="w-full relative px-4">
+      <div className="w-full relative">
         <Text type="title1" weight="semibold" align="center">
           Ad Marketplace
         </Text>
