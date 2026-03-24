@@ -3,7 +3,7 @@ import { Button, Icon, Text } from "@telegram-tools/ui-kit";
 import { useMainPage } from "./useMainPage";
 
 export const MainPage = () => {
-  const { items, handleAddChanel } = useMainPage();
+  const { items, handleButtonClick } = useMainPage();
 
   return (
     <PageLayout>
@@ -28,10 +28,8 @@ export const MainPage = () => {
         </div>
       </div>
       <div className="fixed bottom-7 w-full left-0 px-4">
-        <Button type="primary" onClick={handleAddChanel}>
-          <Text type="body" color="white">
-            Get channel on waitlist
-          </Text>
+        <Button type="primary" onClick={handleButtonClick}>
+          Get channel on waitlist
         </Button>
       </div>
     </PageLayout>

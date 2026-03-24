@@ -1,11 +1,12 @@
 import crownIcon from '@assets/icons/crown.svg'
 import lockCircleIcon from '@assets/icons/lock-circle-fill.svg'
 import percentCircleIcon from '@assets/icons/percent-circle-fill.svg'
-import { APP_CONFIG } from '@shared/config'
 import { useTelegram } from '@shared/hooks'
+import { useNavigate } from 'react-router-dom'
 
 export const useMainPage = () => {
-  const { webApp, handleHaptic } = useTelegram()
+  const { handleHaptic } = useTelegram()
+  const navigate = useNavigate()
 
   const items = [
     {
@@ -25,11 +26,10 @@ export const useMainPage = () => {
     },
   ]
 
-  const handleAddChanel = () => {
+  const handleButtonClick = () => {
     handleHaptic('soft')
-    const link = `${APP_CONFIG.tgBotLink}?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+manage_chat+promote_members+post_stories+edit_stories+delete_stories`
-    webApp?.openTelegramLink?.(link)
+    navigate('/add-bot-to-channel')
   }
 
-  return { items, handleAddChanel }
+  return { items, handleButtonClick }
 }

@@ -1,1 +1,1 @@
-export { useAuthMutation } from './queries'
+export * from './queries'
