@@ -10,13 +10,13 @@ type AppConfig = {
 const MODE_DEFAULTS: Record<AppMode, Omit<AppConfig, 'mode'>> = {
   development: {
     domain: 'https://adsmrkt.alfaconstructor.com/api',
-    tgBotName: 'my_dev_bot',
-    tgBotLink: 'https://t.me/my_dev_bot',
+    tgBotName: 'dumbbump_bot',
+    tgBotLink: 'https://t.me/dumbbump_bot',
   },
   production: {
-    domain: 'https://adsmrkt-stg.alfaconstructor.com/api',
-    tgBotName: 'my_prod_bot',
-    tgBotLink: 'https://t.me/my_prod_bot',
+    domain: 'https://adsmrkt.alfaconstructor.com/api',
+    tgBotName: 'dumbbump_bot',
+    tgBotLink: 'https://t.me/dumbbump_bot',
   },
 }
 

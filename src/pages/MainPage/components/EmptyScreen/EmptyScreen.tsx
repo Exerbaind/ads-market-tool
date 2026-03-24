@@ -7,7 +7,7 @@ export const EmptyScreen = () => {
 
   return (
     <PageLayout key="empty">
-      <div className="min-h-screen flex flex-col items-center justify-center w-full relative px-4">
+      <div className="h-full flex flex-col items-center justify-center w-full relative px-4">
         <Text type="title1" weight="semibold">
           Ad Marketplace
         </Text>
