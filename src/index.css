@@ -11,19 +11,22 @@
 }
 
 :root[data-theme="dark"] {
-  --bg-primary: var(--color-black);
+  --bg-primary: rgba(28, 28, 30, 1);
+  --bg-secondary: var(--color-black);
 
   --text-primary: var(--color-white);
 }
 
 :root[data-theme="light"] {
-  --bg-primary: var(--color-white);
+  --bg-primary: rgba(242, 242, 247, 1);
+  --bg-secondary: var(--color-white);
 
   --text-primary: var(--color-black);
 }
 
 @theme {
   --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
   --color-text-primary: var(--text-primary);
   --color-accent-primary: var(--color-accent);
 }
@@ -32,6 +35,7 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   font-family: inherit;

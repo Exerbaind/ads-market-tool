@@ -1,3 +1,3 @@
 export const FEATURE_FLAGS = {
-  ENABLE_WAITLIST: true,
+  WAITLIST_ENABLED: true,
 } as const

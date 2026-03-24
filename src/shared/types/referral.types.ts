@@ -1,3 +1,3 @@
-export type Referral = {
-  id: string
-}
+import type { User } from './user.types'
+
+export type Referral = User

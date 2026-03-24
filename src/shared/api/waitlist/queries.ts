@@ -4,9 +4,8 @@ import { useQuery } from '@tanstack/react-query'
 import { waitlistApi } from './api'
 
 export const waitlistKeys = {
-  waitlist: ['waitlist'] as const,
-  waitlistPolling: (ids: string) =>
-    [waitlistKeys.waitlist, 'polling', ids] as const,
+  all: ['waitlist'] as const,
+  waitlistPolling: (ids: string) => [waitlistKeys.all, 'polling', ids] as const,
 }
 
 type WaitlistQueryOptions = {
@@ -20,7 +19,7 @@ type PollingWaitlistQueryOptions = WaitlistQueryOptions & {
 
 export const useGetWaitlistQuery = (options?: WaitlistQueryOptions) => {
   return useQuery<Waitlist, ApiClientError>({
-    queryKey: waitlistKeys.waitlist,
+    queryKey: waitlistKeys.all,
     queryFn: waitlistApi.getWaitlist,
     enabled: options?.enabled,
     staleTime: 15_000,

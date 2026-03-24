@@ -5,9 +5,11 @@ import type { Data as DotLottieData } from '@lottiefiles/dotlottie-web'
 import {
   useGetWaitlistQuery,
   usePollingWaitlistChannelQuery,
+  waitlistKeys,
 } from '@shared/api'
 import { APP_CONFIG, FEATURE_FLAGS } from '@shared/config'
 import { useTelegram } from '@shared/hooks'
+import { useQueryClient } from '@tanstack/react-query'
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -39,15 +41,17 @@ type PageData = {
 export const useAddBotToChannelPage = () => {
   const navigate = useNavigate()
   const { webApp, handleHaptic } = useTelegram()
+
+  const queryClient = useQueryClient()
   const [step, setStep] = useState<Step>('add')
   const [isPolling, setIsPolling] = useState(false)
 
   const { data: waitlistData } = useGetWaitlistQuery({
-    enabled: FEATURE_FLAGS.ENABLE_WAITLIST,
+    enabled: FEATURE_FLAGS.WAITLIST_ENABLED,
   })
   const { data: waitlistPollingData } = usePollingWaitlistChannelQuery({
     baselineChannels: waitlistData?.channels_connected,
-    enabled: isPolling && FEATURE_FLAGS.ENABLE_WAITLIST,
+    enabled: isPolling && FEATURE_FLAGS.WAITLIST_ENABLED,
   })
 
   const handleChangeStep = useCallback((value: Step) => {
@@ -85,7 +89,8 @@ export const useAddBotToChannelPage = () => {
 
     handleChangeStep('success')
     setIsPolling(false)
-  }, [handleChangeStep, waitlistPollingData])
+    queryClient.invalidateQueries({ queryKey: waitlistKeys.all })
+  }, [handleChangeStep, waitlistPollingData, queryClient])
 
   const pageData: PageData[] = [
     {

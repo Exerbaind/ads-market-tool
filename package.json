@@ -16,7 +16,7 @@
     "@tanstack/query-async-storage-persister": "^5.90.27",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-query-persist-client": "^5.90.27",
-    "@telegram-tools/ui-kit": "^0.2.5-dev.12",
+    "@telegram-tools/ui-kit": "^0.2.5-dev.15",
     "clsx": "^2.1.1",
     "jwt-decode": "^4.0.0",
     "ky": "^1.14.3",

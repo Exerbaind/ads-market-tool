@@ -1,5 +1,5 @@
 import { QueryProvider } from "@shared/providers";
-import { ThemeProvider } from "@telegram-tools/ui-kit";
+import { ThemeProvider, ToastProvider } from "@telegram-tools/ui-kit";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -15,11 +15,13 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <QueryProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </QueryProvider>
+      <ToastProvider>
+        <QueryProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </QueryProvider>
+      </ToastProvider>
     </ThemeProvider>
   </StrictMode>,
 );
