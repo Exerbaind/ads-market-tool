@@ -60,9 +60,13 @@ export const useTelegram = () => {
 
   const applyTelegramTheme = useCallback(() => {
     const scheme = webApp?.colorScheme === 'dark' ? 'dark' : 'light'
+    const backgroundColor =
+      scheme === 'dark' ? 'rgb(28, 28, 30)' : 'rgb(242, 242, 247)'
 
     document.documentElement.dataset.theme = scheme
     document.documentElement.style.colorScheme = scheme
+    webApp?.setBackgroundColor?.(backgroundColor)
+    webApp?.setHeaderColor?.(backgroundColor)
   }, [webApp])
 
   const subscribeTelegramTheme = useCallback(() => {
