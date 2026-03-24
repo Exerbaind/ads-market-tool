@@ -7,7 +7,7 @@ export const AddBotToChannelPage = () => {
 
   return (
     <PageLayout key={data?.key}>
-      <div className="min-h-screen flex flex-col items-center justify-center w-full relative px-4">
+      <div className="h-full flex flex-col items-center justify-center w-full relative px-4">
         {data?.media && data.media.type === "lottie" && (
           <LottieRenderer data={data.media.src} width={112} height={112} />
         )}

@@ -8,7 +8,7 @@ export const NotFoundPage = () => {
   const { handleBack } = useNotFoundPage();
   return (
     <PageLayout>
-      <div className="h-screen flex flex-col items-center justify-center">
+      <div className="h-full flex flex-col items-center justify-center">
         <LottieRenderer data={sneezeLottie} width={112} height={112} />
         <div className="mt-4">
           <Text type="title1" weight="bold">
