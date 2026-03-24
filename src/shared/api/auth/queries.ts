@@ -21,8 +21,11 @@ export const useAuthMutation = (): UseMutationResult<
   return useMutation<AuthResponse, ApiClientError, void>({
     mutationKey: authKeys.authorize(),
     mutationFn: () => {
-      const initData =
-        webApp?.initData || import.meta.env.VITE_TELEGRAM_INIT_DATA
+      const initData = webApp?.initData
+
+      if (!initData) {
+        throw new Error('Telegram initData is required')
+      }
 
       return authApi.authorize({ initData })
     },

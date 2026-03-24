@@ -37,13 +37,20 @@
 
 html,
 body {
+  height: 100%;
   margin: 0;
   font-family: inherit;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  overscroll-behavior-y: none;
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
+}
+
+#root {
+  height: 100%;
+  background-color: var(--bg-primary);
 }
 
 @layer components {
