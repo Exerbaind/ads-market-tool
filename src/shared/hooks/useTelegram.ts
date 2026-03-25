@@ -1,3 +1,4 @@
+import { fromBase64Url } from "@shared/lib";
 import { useCallback } from "react";
 
 type ImpactOccurredStyle = "light" | "medium" | "heavy" | "rigid" | "soft";
@@ -58,6 +59,20 @@ export const useTelegram = () => {
     webApp?.disableVerticalSwipes?.();
   };
 
+  const getStartappParam = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const startapp =
+      searchParams.get("startapp") || searchParams.get("'tgWebAppStartParam'");
+
+    if (!startapp) return null;
+
+    try {
+      return fromBase64Url(startapp);
+    } catch {
+      return null;
+    }
+  };
+
   const applyTelegramTheme = useCallback(() => {
     const scheme = webApp?.colorScheme === "dark" ? "dark" : "light";
     const backgroundColor =
@@ -91,6 +106,7 @@ export const useTelegram = () => {
     handleHaptic,
     handleHapticSelection,
     checkDevice,
+    getStartappParam,
     initTelegramApp,
     applyTelegramTheme,
     subscribeTelegramTheme,
