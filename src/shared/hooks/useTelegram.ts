@@ -62,14 +62,16 @@ export const useTelegram = () => {
   const getStartappParam = () => {
     const searchParams = new URLSearchParams(window.location.search);
     const startapp =
-      searchParams.get("startapp") || searchParams.get("'tgWebAppStartParam'");
+      searchParams.get("startapp") ||
+      searchParams.get("tgWebAppStartParam") ||
+      webApp?.initDataUnsafe?.start_param;
 
     if (!startapp) return null;
 
     try {
       return fromBase64Url(startapp);
     } catch {
-      return null;
+      return startapp;
     }
   };
 
