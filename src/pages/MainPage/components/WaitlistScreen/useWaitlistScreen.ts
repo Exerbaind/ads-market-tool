@@ -1,5 +1,5 @@
-import clockIcon from '@assets/icons/clock.svg'
-import percentCircleIcon from '@assets/icons/percent-circle-fill.svg'
+import clockIcon from '@assets/icons/clock.svg?raw'
+import percentCircleIcon from '@assets/icons/percent-circle-fill.svg?raw'
 import { useGetWaitlistQuery } from '@shared/api'
 import { APP_CONFIG, FEATURE_FLAGS } from '@shared/config'
 import { useTelegram } from '@shared/hooks'

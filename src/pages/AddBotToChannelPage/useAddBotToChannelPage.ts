@@ -1,6 +1,6 @@
-import megaphoneIcon from '@assets/icons/megaphone.svg?raw'
-import confettiLottie from '@assets/lotties/confetti.json?raw'
-import sandwatchLottie from '@assets/lotties/sandwatch.json?raw'
+import megaphoneIcon from '@assets/icons/megaphone.svg'
+import confettiLottie from '@assets/lotties/confetti.json'
+import sandwatchLottie from '@assets/lotties/sandwatch.json'
 import type { Data as DotLottieData } from '@lottiefiles/dotlottie-web'
 import {
   useGetWaitlistQuery,
