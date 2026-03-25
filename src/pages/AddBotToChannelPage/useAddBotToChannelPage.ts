@@ -62,7 +62,7 @@ export const useAddBotToChannelPage = () => {
   const handleAddChannel = () => {
     handleHaptic("soft");
 
-    const link = `t.me/${APP_CONFIG.tgBotName}?startchannel&admin`;
+    const link = `${APP_CONFIG.tgBotLink}?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+manage_chat+promote_members+post_stories+edit_stories+delete_stories`;
     webApp?.openTelegramLink?.(link);
     setIsPolling(true);
     handleChangeStep("check");
