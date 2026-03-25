@@ -1,4 +1,3 @@
-import crossCircleIcon from "@assets/icons/cross-circle.svg";
 import plusCircleIcon from "@assets/icons/plus-circle.svg";
 import { PageLayout } from "@shared/components";
 import { pluralize } from "@shared/lib";
@@ -15,7 +14,6 @@ import { useWaitlistScreen } from "./useWaitlistScreen";
 export const WaitlistScreen = () => {
   const {
     handleReferralClick,
-    handleRemoveChannel,
     handleAddChannel,
     items,
     waitlistData,
@@ -92,20 +90,6 @@ export const WaitlistScreen = () => {
                         Math.ceil(Math.random() * 1000),
                       )}
                     </Text>
-                  }
-                  after={
-                    <button
-                      aria-label={`Remove ${channel.title}`}
-                      className="inline-flex cursor-pointer border-none bg-transparent p-0"
-                      onClick={() => handleRemoveChannel(channel.id)}
-                      type="button"
-                    >
-                      <Icon
-                        customIcon={crossCircleIcon}
-                        width="16px"
-                        height="16px"
-                      />
-                    </button>
                   }
                 />
               ))}
