@@ -1,4 +1,4 @@
-import megaphoneIcon from '@assets/icons/megaphone.svg'
+import megaphoneIcon from '@assets/icons/megaphone.svg?raw'
 import confettiLottie from '@assets/lotties/confetti.json'
 import sandwatchLottie from '@assets/lotties/sandwatch.json'
 import type { Data as DotLottieData } from '@lottiefiles/dotlottie-web'
