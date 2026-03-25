@@ -14,7 +14,12 @@ export const EmptyScreen = () => {
         <div className="mt-8 flex flex-col justify-center gap-6">
           {items.map((item) => (
             <div key={item.title} className="flex gap-4">
-              <Icon customIcon={item.icon} width="30px" height="30px" />
+              <Icon
+                customIcon={item.icon}
+                width="30px"
+                height="30px"
+                color="accent"
+              />
               <div className="flex flex-col gap-0.5 pt-1">
                 <Text type="body" weight="medium">
                   {item.title}
