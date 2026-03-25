@@ -1,106 +1,102 @@
-import { fromBase64Url } from "@shared/lib";
-import { useCallback } from "react";
+import { fromBase64Url } from '@shared/lib'
+import { useCallback } from 'react'
 
-type ImpactOccurredStyle = "light" | "medium" | "heavy" | "rigid" | "soft";
-type NotificationOccurredStyle = "error" | "success" | "warning";
+type ImpactOccurredStyle = 'light' | 'medium' | 'heavy' | 'rigid' | 'soft'
+type NotificationOccurredStyle = 'error' | 'success' | 'warning'
 
 export const useTelegram = () => {
-  const webApp = window.Telegram?.WebApp;
+  const webApp = window.Telegram?.WebApp
 
   const telegramId =
-    webApp?.initDataUnsafe?.user?.id ?? import.meta.env.VITE_TELEGRAM_ID;
+    webApp?.initDataUnsafe?.user?.id ?? import.meta.env.VITE_TELEGRAM_ID
 
-  const haptic = webApp?.HapticFeedback;
-  const impactStyles = ["light", "medium", "heavy", "rigid", "soft"] as const;
+  const haptic = webApp?.HapticFeedback
+  const impactStyles = ['light', 'medium', 'heavy', 'rigid', 'soft'] as const
 
   const handleHaptic = (
     style: ImpactOccurredStyle | NotificationOccurredStyle,
   ) => {
-    if (!haptic) return;
+    if (!haptic) return
 
     if (impactStyles.includes(style as ImpactOccurredStyle)) {
-      haptic.impactOccurred(style as ImpactOccurredStyle);
-      return;
+      haptic.impactOccurred(style as ImpactOccurredStyle)
+      return
     }
 
-    haptic.notificationOccurred(style as NotificationOccurredStyle);
-  };
+    haptic.notificationOccurred(style as NotificationOccurredStyle)
+  }
 
   const handleHapticSelection = () => {
-    if (!haptic) return;
-    haptic.selectionChanged();
-  };
+    if (!haptic) return
+    haptic.selectionChanged()
+  }
 
   const checkDevice = () => {
-    const webApp = window?.Telegram?.WebApp;
+    const webApp = window?.Telegram?.WebApp
 
     return {
       isMobile: webApp
-        ? webApp?.platform === "ios" ||
-          webApp?.platform === "android" ||
-          webApp?.platform === "android_x"
+        ? webApp?.platform === 'ios' ||
+          webApp?.platform === 'android' ||
+          webApp?.platform === 'android_x'
         : false,
-      isIos: webApp ? webApp?.platform === "ios" : false,
+      isIos: webApp ? webApp?.platform === 'ios' : false,
       isAndroid: webApp
-        ? webApp?.platform === "android" || webApp?.platform === "android_x"
+        ? webApp?.platform === 'android' || webApp?.platform === 'android_x'
         : false,
-    };
-  };
+    }
+  }
 
   const initTelegramApp = () => {
-    if (!webApp) return;
-    webApp?.MainButton?.hide();
+    if (!webApp) return
+    webApp?.MainButton?.hide()
 
-    const { isMobile } = checkDevice();
-    if (!isMobile) return;
+    const { isMobile } = checkDevice()
+    if (!isMobile) return
 
-    webApp?.requestFullscreen?.();
-    webApp?.lockOrientation?.();
-    webApp?.disableVerticalSwipes?.();
-  };
+    webApp?.requestFullscreen?.()
+    webApp?.lockOrientation?.()
+    webApp?.disableVerticalSwipes?.()
+  }
 
   const getStartappParam = () => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const startapp =
-      searchParams.get("startapp") ||
-      searchParams.get("tgWebAppStartParam") ||
-      webApp?.initDataUnsafe?.start_param;
+    const startapp = webApp?.initDataUnsafe?.start_param
 
-    if (!startapp) return null;
+    if (!startapp) return null
 
     try {
-      return fromBase64Url(startapp);
+      return fromBase64Url(startapp)
     } catch {
-      return startapp;
+      return startapp
     }
-  };
+  }
 
   const applyTelegramTheme = useCallback(() => {
-    const scheme = webApp?.colorScheme === "dark" ? "dark" : "light";
+    const scheme = webApp?.colorScheme === 'dark' ? 'dark' : 'light'
     const backgroundColor =
-      scheme === "dark" ? "rgb(28, 28, 30)" : "rgb(242, 242, 247)";
+      scheme === 'dark' ? 'rgb(28, 28, 30)' : 'rgb(242, 242, 247)'
 
-    document.documentElement.dataset.theme = scheme;
-    document.documentElement.style.colorScheme = scheme;
-    webApp?.setBackgroundColor?.(backgroundColor);
-    webApp?.setHeaderColor?.(backgroundColor);
-  }, [webApp]);
+    document.documentElement.dataset.theme = scheme
+    document.documentElement.style.colorScheme = scheme
+    webApp?.setBackgroundColor?.(backgroundColor)
+    webApp?.setHeaderColor?.(backgroundColor)
+  }, [webApp])
 
   const subscribeTelegramTheme = useCallback(() => {
     if (!webApp?.onEvent || !webApp?.offEvent) {
-      return () => undefined;
+      return () => undefined
     }
 
     const handleThemeChanged = () => {
-      applyTelegramTheme();
-    };
+      applyTelegramTheme()
+    }
 
-    webApp.onEvent("themeChanged", handleThemeChanged);
+    webApp.onEvent('themeChanged', handleThemeChanged)
 
     return () => {
-      webApp.offEvent("themeChanged", handleThemeChanged);
-    };
-  }, [applyTelegramTheme, webApp]);
+      webApp.offEvent('themeChanged', handleThemeChanged)
+    }
+  }, [applyTelegramTheme, webApp])
 
   return {
     webApp,
@@ -112,5 +108,5 @@ export const useTelegram = () => {
     initTelegramApp,
     applyTelegramTheme,
     subscribeTelegramTheme,
-  };
-};
+  }
+}
