@@ -1,5 +1,6 @@
 export type AuthRequest = {
-  initData: string
-}
+  initData: string;
+  refId?: string;
+};
 
-export type AuthResponse = string
+export type AuthResponse = string;
