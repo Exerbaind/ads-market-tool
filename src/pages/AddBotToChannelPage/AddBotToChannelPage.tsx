@@ -12,7 +12,7 @@ export const AddBotToChannelPage = () => {
           <LottieRenderer data={data.media.src} width={112} height={112} />
         )}
         {data?.media && data.media.type === "icon" && (
-          <Icon customIcon={data.media.src} width="112px" />
+          <Icon customIcon={data.media.src} width="112px" color="accent" />
         )}
         <div className="mt-4">
           <Text

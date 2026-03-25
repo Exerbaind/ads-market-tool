@@ -29,7 +29,12 @@ export const WaitlistScreen = () => {
         <div className="mt-8 flex flex-col w-full gap-6 bg-bg-secondary rounded-[26px] p-4">
           {items.map((item) => (
             <div key={item.title} className="flex gap-4">
-              <Icon customIcon={item.icon} width="22px" height="22px" />
+              <Icon
+                customIcon={item.icon}
+                width="22px"
+                height="22px"
+                color="accent"
+              />
               <div className="flex flex-col gap-0.5">
                 <Text type="body" weight="medium">
                   {item.title}
