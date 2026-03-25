@@ -1,6 +1,6 @@
-import crownIcon from '@assets/icons/crown.svg'
-import lockCircleIcon from '@assets/icons/lock-circle-fill.svg'
-import percentCircleIcon from '@assets/icons/percent-circle-fill.svg'
+import crownIcon from '@assets/icons/crown.svg?raw'
+import lockCircleIcon from '@assets/icons/lock-circle-fill.svg?raw'
+import percentCircleIcon from '@assets/icons/percent-circle-fill.svg?raw'
 import { useTelegram } from '@shared/hooks'
 import { useNavigate } from 'react-router-dom'
 

@@ -1,4 +1,4 @@
-import plusCircleIcon from "@assets/icons/plus-circle.svg";
+import plusCircleIcon from "@assets/icons/plus-circle.svg?raw";
 import { PageLayout } from "@shared/components";
 import { pluralize } from "@shared/lib";
 import {

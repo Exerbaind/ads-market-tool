@@ -9,7 +9,7 @@
         "@tanstack/query-async-storage-persister": "^5.90.27",
         "@tanstack/react-query": "^5.90.21",
         "@tanstack/react-query-persist-client": "^5.90.27",
-        "@telegram-tools/ui-kit": "^0.2.5-dev.15",
+        "@telegram-tools/ui-kit": "^0.2.5-dev.17",
         "clsx": "^2.1.1",
         "jwt-decode": "^4.0.0",
         "ky": "^1.14.3",
@@ -278,7 +278,7 @@
 
     "@tanstack/react-query-persist-client": ["@tanstack/react-query-persist-client@5.90.27", "", { "dependencies": { "@tanstack/query-persist-client-core": "5.92.4" }, "peerDependencies": { "@tanstack/react-query": "^5.91.2", "react": "^18 || ^19" } }, "sha512-rKiCZ2C0kzmyDoLfrPHz2UdEDKHo/oXkKVRbhgtHya/bWH6jWDFX5cSFc1SLB33FDrgR8uOG1MwVohBrI4+F8A=="],
 
-    "@telegram-tools/ui-kit": ["@telegram-tools/ui-kit@0.2.5-dev.15", "", { "dependencies": { "@lottiefiles/dotlottie-web": "^0.67.0", "classnames": "^2.5.1", "react-remove-scroll": "^2.5.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" } }, "sha512-Y4sfpi/iKas/ctjoGFo/LpxkH3scnixoQrzsGbo8KheW9BxLz7aAqdquFuENtueXasYy7G4/FEmiVlkc163RNA=="],
+    "@telegram-tools/ui-kit": ["@telegram-tools/ui-kit@0.2.5-dev.17", "", { "dependencies": { "@lottiefiles/dotlottie-web": "^0.67.0", "classnames": "^2.5.1", "react-remove-scroll": "^2.5.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" } }, "sha512-da0M2QWHq4N237FAfdyU59G/fedbW+RdQ7VqCSv29Duf0ojdroyRkNSiP3w9/ADB+DK+GM9uJPVLze+Tf+rp7g=="],
 
     "@types/babel__core": ["@types/babel__core@7.20.5", "", { "dependencies": { "@babel/parser": "^7.20.7", "@babel/types": "^7.20.7", "@types/babel__generator": "*", "@types/babel__template": "*", "@types/babel__traverse": "*" } }, "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA=="],
 
