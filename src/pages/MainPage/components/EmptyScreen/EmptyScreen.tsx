@@ -11,7 +11,7 @@ export const EmptyScreen = () => {
         <Text type="title1" weight="semibold">
           Ad Marketplace
         </Text>
-        <div className="mt-8 flex flex-col w-full items-center justify-center gap-6">
+        <div className="mt-8 flex flex-col justify-center gap-6">
           {items.map((item) => (
             <div key={item.title} className="flex gap-4">
               <Icon customIcon={item.icon} width="30px" height="30px" />
