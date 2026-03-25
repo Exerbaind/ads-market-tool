@@ -58,6 +58,7 @@ export const WaitlistScreen = () => {
                     customIcon={plusCircleIcon}
                     width="22px"
                     height="22px"
+                    color="accent"
                   />
                 }
                 text={
