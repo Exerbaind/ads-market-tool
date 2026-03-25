@@ -1,7 +1,7 @@
 import clockIcon from '@assets/icons/clock.svg'
 import percentCircleIcon from '@assets/icons/percent-circle-fill.svg'
 import { useGetWaitlistQuery } from '@shared/api'
-import { FEATURE_FLAGS } from '@shared/config'
+import { APP_CONFIG, FEATURE_FLAGS } from '@shared/config'
 import { useTelegram } from '@shared/hooks'
 import { toBase64Url } from '@shared/lib'
 import { useNavigate } from 'react-router-dom'
@@ -32,7 +32,9 @@ export const useWaitlistScreen = () => {
     handleHaptic('soft')
     const refUrl = `refId=${telegramId}`
     const refParamBase64 = toBase64Url(refUrl)
-    webApp?.openTelegramLink?.(`https://t.me/share/url?url=${refParamBase64}`)
+    webApp?.openTelegramLink?.(
+      `https://t.me/share/url?url=${APP_CONFIG.tgBotLink}?startapp=${refParamBase64}`,
+    )
   }
 
   const handleAddChannel = () => {
